@@ -1,4 +1,4 @@
-# Todo App spring Boot Server
+# Todo-App Spring Boot Server
 
 java -version
 java version "1.8.0_251"
