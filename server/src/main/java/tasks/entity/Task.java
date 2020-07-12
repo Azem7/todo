@@ -1,10 +1,27 @@
-package tasks;
+package tasks.entity;
 
+import com.sun.istack.NotNull;
+import java.sql.Date;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "tasks")  //في غلط بس شغال الكود /:
 public class Task {
 
+	@NotNull
 	private String task;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	private String description;
+
+	@NotNull
 	private String creationDate;
+
+	@NotNull
 	private String dueDate;
 
 	public String getTask() {
@@ -21,6 +38,14 @@ public class Task {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getCreationDate() {
@@ -85,5 +110,4 @@ public class Task {
 		return "Task [task=" + task + ", id=" + id + ", dueDate=" + dueDate
 				+ "]";
 	}
-
 }
