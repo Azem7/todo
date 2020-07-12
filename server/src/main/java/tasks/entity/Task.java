@@ -1,22 +1,23 @@
 package tasks.entity;
 
-import com.sun.istack.NotNull;
-import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import javax.persistence.*;
+import com.sun.istack.NotNull;
 
 @Entity
-@Table(name = "tasks")  //في غلط بس شغال الكود /:
+@Table(name = "tasks")
 public class Task {
 
 	@NotNull
 	private String task;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
-	private String description;
 
 	@NotNull
 	private String creationDate;
@@ -38,14 +39,6 @@ public class Task {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public String getCreationDate() {
