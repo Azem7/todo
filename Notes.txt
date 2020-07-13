@@ -1,0 +1,6 @@
+To add Dependencys Command: mvnw dependency:tree
+or mvn eclipse:clean then mvn eclipse:eclipse
+
+
+curl test:
+curl -d "creationDate=value2&dueDate=value3&taskParam=value4" -X POST http://localhost:8080/task
