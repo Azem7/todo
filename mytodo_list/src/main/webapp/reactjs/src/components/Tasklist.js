@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 
 import {Card, Table} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faList} from "@fortawesome/free-solid-svg-icons";
 
 export default class Tasklist extends Component {
     render() {
         return (
             <Card>
-                <Card.Header>Task list</Card.Header>
+                <Card.Header> <FontAwesomeIcon icon={faList} /> Task list</Card.Header>
                 <Card.Body>
                     <Table bordered hover striped variant="hell">
                         <thead>

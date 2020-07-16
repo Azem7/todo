@@ -1,20 +1,13 @@
 package tasks.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import tasks.entity.Task;
 import tasks.repository.TasksRepository;
@@ -25,8 +18,8 @@ public class TaskController {
 	@Autowired
 	private TasksRepository tasksRepository;
 
-	// @RequestMapping(method = RequestMethod.GET, path = "/", produces =
-	// MediaType.APPLICATION_JSON_VALUE)
+	//@RequestMapping(method = RequestMethod.GET, path = "/", produces =
+	//MediaType.APPLICATION_JSON_VALUE)
 
 	// Return all Tasks
 	@GetMapping("/tasks")
@@ -36,10 +29,11 @@ public class TaskController {
 
 
 	// post request
-	 @PostMapping(path = "/task",produces = MediaType.APPLICATION_JSON_VALUE)
-	 public @ResponseBody String addNewTask(@Validated @RequestParam String taskParam,@RequestParam String creationDate,@RequestParam String dueDate) {
+	 @PostMapping(path = "/add_task",produces = MediaType.APPLICATION_JSON_VALUE)
+	 public @ResponseBody String addNewTask(@Validated @RequestParam String taskParam, @RequestParam String description, @RequestParam Date creationDate, @RequestParam Date dueDate) {
 		Task task = new Task();
 		task.setCreationDate(creationDate);
+		task.setDescription(description);
 		task.setTask(taskParam);
 		task.setDueDate(dueDate);
 	 tasksRepository.save(task);
@@ -61,6 +55,7 @@ public class TaskController {
 		Task task = tasksRepository.findById(taskId).orElseThrow(() -> new Exception("Error : Task was not found"));
 
 		task.setDueDate(taskInfo.getDueDate());
+		task.setDescription(taskInfo.getDescription());
 		task.setTask(taskInfo.getTask());
 		task.setCreationDate(taskInfo.getCreationDate());
 

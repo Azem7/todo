@@ -8,6 +8,8 @@ import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "tasks")
 public class Task {
@@ -19,11 +21,13 @@ public class Task {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@NotNull
-	private String creationDate;
+	private String description;
 
 	@NotNull
-	private String dueDate;
+	private Date creationDate;
+
+	@NotNull
+	private Date dueDate;
 
 	public String getTask() {
 		return task;
@@ -41,19 +45,27 @@ public class Task {
 		this.id = id;
 	}
 
-	public String getCreationDate() {
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(String creationDate) {
+	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	public String getDueDate() {
+	public Date getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(String dueDate) {
+	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
 
