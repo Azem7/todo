@@ -3,8 +3,21 @@ import React, {Component} from 'react';
 import {Card, Table} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faList} from "@fortawesome/free-solid-svg-icons";
+import axios from 'axios';
 
 export default class Tasklist extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            books: []
+        };
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:8080/tasks").then(response => console.log(response.data));
+    }
+
     render() {
         return (
             <Card>
