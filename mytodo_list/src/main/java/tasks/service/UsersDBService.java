@@ -4,38 +4,38 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tasks.entity.Task;
-import tasks.repository.TasksRepository;
+import tasks.entity.User;
+import tasks.repository.UsersRepository;
 
 import java.util.Collection;
 
 @Service
-public class TaskService implements IService<Task> {
+public class UsersDBService implements IService<User> {
 	
 	@Autowired
-	private TasksRepository tasksRepository;
+	private UsersRepository usersRepository;
 
 	@Override
-	public Collection<Task> findAll() {
-		return tasksRepository.findAll();
+	public Collection<User> findAll() {
+		return usersRepository.findAll();
 	}
 
 	@Override
-	public Task findById(int id) {
-		return tasksRepository.findById(id).get();
+	public User findById(int id) {
+		return usersRepository.findById(id).get();
 	}
 
 	@Override
-	public Task saveOrUpdate(Task task) {
-		return tasksRepository.saveAndFlush(task);
+	public User saveOrUpdate(User user) {
+		return usersRepository.saveAndFlush(user);
 	}
 
 	@Override
 	public String deleteById(int id) {
 		JSONObject jsonObject = new JSONObject();
 		try {
-			tasksRepository.deleteById(id);
-			jsonObject.put("message", "Task deleted successfully");
+			usersRepository.deleteById(id);
+			jsonObject.put("message", "User deleted successfully");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-public interface TaskController<T> {
+public interface InstructionsInterface<T> {
 	@GetMapping
     ResponseEntity<Collection<T>> findAll();
 	

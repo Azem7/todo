@@ -25,7 +25,7 @@ function App() {
                 <Col lg={12} style={marginTop}>
                     <Switch>
                         <Route path="/" exact component={Welcome}/>
-                        <Route path="/login" exact component={Login}/>
+                        <Route path="/user" exact component={Login}/>
                         <Route path="/register" exact component={Register}/>
                         <Route path="/add_task" exact component={Add_task}/>
                         <Route path="/tasks" exact component={Tasklist}/>

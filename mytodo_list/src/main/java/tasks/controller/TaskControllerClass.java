@@ -1,7 +1,7 @@
 package tasks.controller;
 
 import tasks.entity.Task;
-import tasks.controller.interfaces.TaskController;
+import tasks.controller.interfaces.InstructionsInterface;
 import tasks.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.util.Collection;
 @RestController
 @RequestMapping("/tasks")
 @CrossOrigin(origins="http://localhost:3000")
-public class TaskControllerClass implements TaskController<Task> {
+public class TaskControllerClass implements InstructionsInterface<Task> {
 	
 	@Autowired
 	private IService<Task> taskService;
